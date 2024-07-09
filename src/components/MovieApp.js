@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MovieItem from "./MovieItem";
+import "./styles.css"; // Import the CSS file
 
 const MovieApp = () => {
   const [movies, setMovies] = useState([]);
@@ -35,20 +36,20 @@ const MovieApp = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p className="loading">Loading...</p>;
   }
 
   if (error) {
-    return <p>Error message: {error}</p>;
+    return <p className="error-message">Error message: {error}</p>;
   }
 
   return (
-    <div>
+    <div className="movie-app">
       <h1>Movie List App</h1>
       {movies.length > 0 ? (
         <MovieItem movies={movies} />
       ) : (
-        <p>No movies found</p>
+        <p className="no-movies">No movies found</p>
       )}
     </div>
   );
