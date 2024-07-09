@@ -1,5 +1,5 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import MovieItem from "./MovieItem";
 
 const MovieApp = () => {
   const [movies, setMovies] = useState([]);
@@ -11,28 +11,47 @@ const MovieApp = () => {
       setLoading(true);
       setError(null);
       const response = await fetch(
-        `https://www.omdbapi.com/?i=tt3896198&apikey=e9ef6996//`
+        `https://www.omdbapi.com/?s=star+wars&apikey=e9ef6996`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch movie data");
       }
       const data = await response.json();
-      setMovies(data);
+      if (data.Search) {
+        setMovies(data.Search);
+      } else {
+        throw new Error("No movies found");
+      }
     } catch (error) {
       setError(error.message);
-      setMovies(null);
+      setMovies([]);
     } finally {
       setLoading(false);
     }
   };
-  useEffect(() =>{
-    if(movies){
-        fetchMoviesData(movies)
-    }
-  }, [movies])
-return{
-  {}
-}
 
+  useEffect(() => {
+    fetchMoviesData();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error message: {error}</p>;
+  }
+
+  return (
+    <div>
+      <h1>Movie List App</h1>
+      {movies.length > 0 ? (
+        <MovieItem movies={movies} />
+      ) : (
+        <p>No movies found</p>
+      )}
+    </div>
+  );
 };
+
 export default MovieApp;
