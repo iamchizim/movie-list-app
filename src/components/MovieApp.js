@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import MovieItem from "./MovieItem";
-import "./styles.css"; // Import the CSS file
 
 const MovieApp = () => {
   const [movies, setMovies] = useState([]);

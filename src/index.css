@@ -1,13 +1,89 @@
+/* Global Styles */
 body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f2f5;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #333;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Movie App Container */
+.movie-app {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 800px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Movie List */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li img {
+  width: 50px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+.movie-info {
+  flex-grow: 1;
+}
+
+.movie-info h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #34495e;
+}
+
+.movie-info p {
+  margin: 5px 0 0;
+  color: #7f8c8d;
+}
+
+/* Loading and Error States */
+.loading,
+.error-message {
+  text-align: center;
+  font-size: 16px;
+  color: #e74c3c;
+}
+
+.loading {
+  color: #3498db;
+}
+
+/* No Movies Found Message */
+.no-movies {
+  text-align: center;
+  font-size: 16px;
+  color: #95a5a6;
 }
